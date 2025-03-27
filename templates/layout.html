@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowbite Flask</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/output.css')}}">
+    <!-- CSS de Flowbite -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@1.6.5/dist/flowbite.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="bg-white border-gray-200 rounded-sm dark:bg-gray-900 px-2 py-2.5 sm:px-4">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+            <div class="flex-shrink-0">
+                <img class="h-8 w-8" src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo">
+            </div>
+            <div class="flex md:order-2">
+                <a href="{{ url_for('login.logout') }}"
+                    class="flex bg-white border border-gray-300 rounded-lg text-gray-900 text-sm dark:bg-gray-800 dark:border-gray-600 dark:focus:ring-gray-700 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:text-white focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium hover:bg-gray-100 items-center mb-2 me-2 px-5 py-2.5">              
+                    Salir                                   
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+<div class="flex-col justify-center items-center min-h-screen">
+    {%with messages= get_flashed_messages() %}
+    {% if messages %}
+        {%for message in messages %}
+            <div class="alert alert-success">
+                {{message}}
+            </div>
+        {%endfor%}
+    {%endif%}
+    {%endwith%}
+    {%block container%} 
+    {%endblock%}
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+</body>
+</html>

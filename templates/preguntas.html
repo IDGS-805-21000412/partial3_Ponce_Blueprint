@@ -1,0 +1,76 @@
+{% extends "layout.html" %} 
+{% block container %} 
+{% import "_macros.html" as macros %}
+
+<div class="max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Agregar pregunta</h2>
+    
+    <form action="{{ url_for('profesores.preguntas') }}" method="POST" novalidate>
+        {{ form.csrf_token }} 
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="materia">
+                    Materia
+                </label>
+                {{ macros.campoNuevo(form.materia, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="pregunta">
+                    Pregunta
+                </label>
+                {{ macros.campoNuevo(form.pregunta, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            </div>
+        </div>
+        
+        <div class="space-y-4 mb-6">
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="a">
+                    Opción A
+                </label>
+                {{ macros.campoNuevo(form.a, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="b">
+                    Opción B
+                </label>
+                {{ macros.campoNuevo(form.b, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="c">
+                    Opción C
+                </label>
+                {{ macros.campoNuevo(form.c, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            </div>
+            <div>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="d">
+                    Opción D
+                </label>
+                {{ macros.campoNuevo(form.d, class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline") }}
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="respuestaCorrecta">
+                Respuesta correcta
+            </label>
+            <div class="relative">
+                {{ macros.campoNuevo(form.respuestaCorrecta, class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500") }}
+            </div>
+        </div>
+        
+        <div class="flex items-center justify-between">
+            <button type="submit" id="btn1" name="btn1" value="Registrar"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Registrar
+            </button>
+            <a href="{{ url_for('profesores.indexProfesores') }}" 
+                class="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
