@@ -20,7 +20,7 @@ csrf = CSRFProtect(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login.login'
-login_manager.login_message = "Por favor, inicia sesión para continuar."
+login_manager.login_message = "Por favor, inicia sesión para continuar"
 login_manager.login_message_category = "warning"
 
 logging.basicConfig(filename='app.log', level=logging.INFO,
@@ -29,7 +29,7 @@ logging.basicConfig(filename='app.log', level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 
-logger.info("Aplicación Flask iniciada con éxito.")
+logger.info("Aplicación Flask iniciada con exito.")
 
 app.register_blueprint(alumnos_blueprint, url_prefix='/alumnos')
 app.register_blueprint(profesores_blueprint, url_prefix='/profesores')
